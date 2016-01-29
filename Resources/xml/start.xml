@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GWWinRoot>
+	<GWWin>
+		<enWinType>GWNormalWin</enWinType>
+		<bg>tollgate/bg_write.jpg</bg>
+		<x>0</x>
+		<y>720</y>
+		<anchorX>0</anchorX>
+		<anchorY>1</anchorY>
+		<alpha>255</alpha>
+		<GWCld>
+			<enWinType>GWAnimationWin</enWinType>
+			<des>bgSprite</des>
+			<bg>sprite/logo/logo_01.png</bg>
+			<x>640</x>
+			<y>280</y>
+			<anchorX>0.5</anchorX>
+			<anchorY>0.5</anchorY>
+			<alpha>0</alpha>
+			<plist>sprite/logo/logos.plist</plist>
+			<animation>sprite/logo/logos.png</animation>
+			<animationName>logo_0</animationName>
+			<loops>-1</loops>
+			<delay>0.5</delay>
+		</GWCld>
+		<GWCld>
+			<enWinType>GWScale9Button</enWinType>
+			<des>startBtn</des>
+			<text>@5</text>
+			<fontSize>48</fontSize>
+			<x>640</x>
+			<y>480</y>
+			<width>343</width>
+			<height>95</height>
+			<scale9bg>widget/ribbon/purple.png</scale9bg>
+			<scale9bgDown>widget/ribbon/gray.png</scale9bgDown>
+			<anchorX>0.5</anchorX>
+			<anchorY>0.5</anchorY>
+			<touchable>true</touchable>
+		</GWCld>
+	</GWWin>
+</GWWinRoot>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GWWinRoot>
+	<GWWin>
+		<enWinType>GWNormalWin</enWinType>
+		<bg>tollgate/bg_black.jpg</bg>
+		<x>0</x>
+		<y>720</y>
+		<anchorX>0</anchorX>
+		<anchorY>1</anchorY>
+		<alpha>255</alpha>
+		<GWCld>
+			<enWinType>GWScale9Button</enWinType>
+			<des>back</des>
+			<text>@39</text>
+			<fontSize>40</fontSize>
+			<x>1250</x>
+			<y>25</y>
+			<width>343</width>
+			<height>95</height>
+			<scale9bg>widget/ribbon/purple.png</scale9bg>
+			<scale9bgDown>widget/ribbon/gray.png</scale9bgDown>
+			<anchorX>1</anchorX>
+			<anchorY>1</anchorY>
+			<touchable>true</touchable>
+		</GWCld>
+		<GWCld>
+			<enWinType>GWScale9Button</enWinType>
+			<des>updateBtn</des>
+			<text>@74</text>
+			<fontSize>40</fontSize>
+			<x>250</x>
+			<y>525</y>
+			<width>343</width>
+			<height>95</height>
+			<scale9bg>widget/ribbon/purple.png</scale9bg>
+			<scale9bgDown>widget/ribbon/gray.png</scale9bgDown>
+			<anchorX>0.5</anchorX>
+			<anchorY>0.5</anchorY>
+			<touchable>true</touchable>
+		</GWCld>
+		<GWCld>
+			<enWinType>GWLabel</enWinType>
+			<des>progress</des>
+			<text> </text>
+			<fontSize>40</fontSize>
+			<x>0</x>
+			<y>0</y>
+			<anchorX>0</anchorX>
+			<anchorY>1</anchorY>
+			<alpha>100</alpha>
+		</GWCld>
+	</GWWin>
+</GWWinRoot>
