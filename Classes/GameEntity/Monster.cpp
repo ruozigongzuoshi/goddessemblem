@@ -134,4 +134,5 @@ void Monster::moveEnd(CCObject* pSender) {
 
 	/* 设置状态为达到目的地 */
 	m_isMoveEnd = true;
+	m_isDead = true;
 }

@@ -34,7 +34,7 @@ bool ShopScene::init()
     {
 		//±³¾°ÒôÀÖ
 		//CocosDenshion::SimpleAudioEngine::sharedEngine()->playBackgroundMusic("start.mp3",true);
-		GWWinManager* manager = new GWWinManager();
+		manager = new GWWinManager();
 		GWBase* win = manager->createWinsFromXML("xml/shop.xml");
 
 		this->addChild(manager->getDesktopWin());
@@ -154,11 +154,13 @@ void ShopScene::saveGold()
  void  ShopScene::gotoMenu(CCObject* pSender, CCControlEvent event)
  {
 	 saveGold();
+	 manager->getDesktopWin()->removeAllWins();
 	 SceneManager::sharedSceneManager()->changeScene(SceneManager::en_MenuScene);
  }
 
 void ShopScene::close(CCObject* pSender,  CCControlEvent event)
 {
     // "close" menu item clicked
+	manager->getDesktopWin()->removeAllWins();
     CCDirector::sharedDirector()->end();
 }

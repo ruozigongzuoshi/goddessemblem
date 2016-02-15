@@ -2,7 +2,7 @@
 <GWWinRoot>
 	<GWWin>
 		<enWinType>GWNormalWin</enWinType>
-		<bg>tollgate/bg_black.jpg</bg>
+		<bg>bg/set.jpg</bg>
 		<x>0</x>
 		<y>720</y>
 		<anchorX>0</anchorX>
@@ -28,7 +28,7 @@
 			<des>updateBtn</des>
 			<text>@74</text>
 			<fontSize>40</fontSize>
-			<x>250</x>
+			<x>640</x>
 			<y>525</y>
 			<width>343</width>
 			<height>95</height>

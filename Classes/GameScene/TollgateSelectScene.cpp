@@ -33,7 +33,7 @@ bool TollgateSelectScene::init() {
         CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
 		
         /* 创建关卡选则菜单 */
-		GWWinManager* winManager = new GWWinManager();
+		winManager = new GWWinManager();
 
 		GWBase* win = winManager->createWinsFromXML("xml/TollgateSelectScene.xml");
 
@@ -147,6 +147,7 @@ bool TollgateSelectScene::init() {
  void  TollgateSelectScene::gotoMenu(CCObject* pSender, CCControlEvent event)
  {
 	 //saveGold();
+	 winManager->getDesktopWin()->removeAllWins();
 	 SceneManager::sharedSceneManager()->changeScene(SceneManager::en_MenuScene);
  }
 

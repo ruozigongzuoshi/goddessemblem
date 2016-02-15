@@ -2,6 +2,7 @@
 #include "GameWidget\GWBase.h"
 #include "GameWidget\GWWinManager.h"
 #include "GameScene\SceneManager.h"
+#include "GlobalSetting\GlobalClient.h"
 
 
 CCScene* MenuScene::scene()
@@ -32,8 +33,12 @@ bool MenuScene::init()
     do 
     {
 		//背景音乐
-		//CocosDenshion::SimpleAudioEngine::sharedEngine()->playBackgroundMusic("start.mp3",true);
-		GWWinManager* manager = new GWWinManager();
+		GlobalClient::sharedGlobalClient()->loadMusicSet();
+		if(GlobalClient::sharedGlobalClient()->getMusicSet() > 0){
+			CCString* music = CCString::createWithFormat("music/tollgate_%d.mp3",(int)(CCRANDOM_0_1()*10)+1);
+			CocosDenshion::SimpleAudioEngine::sharedEngine()->playBackgroundMusic(music->getCString(),true);
+		}
+		manager = new GWWinManager();
 		GWBase* win = manager->createWinsFromXML("xml/menu.xml");
 
 		this->addChild(manager->getDesktopWin());
@@ -79,36 +84,42 @@ bool MenuScene::init()
 }
 void  MenuScene::storyMode(CCObject* pSender, CCControlEvent event)
  {
+	 manager->getDesktopWin()->removeAllWins();
 	 /* 调用场景管理器切换场景 */
      SceneManager::sharedSceneManager()->changeScene(SceneManager::en_TollgateSelectScene);
  }
 
 void  MenuScene::set(CCObject* pSender, CCControlEvent event)
  {
+	 manager->getDesktopWin()->removeAllWins();
 	 /* 调用场景管理器切换场景 */
      SceneManager::sharedSceneManager()->changeScene(SceneManager::en_SetScene);
  }
 
 void  MenuScene::freedomMode(CCObject* pSender, CCControlEvent event)
  {
+	 manager->getDesktopWin()->removeAllWins();
 	 /* 调用场景管理器切换场景 */
      SceneManager::sharedSceneManager()->changeScene(SceneManager::en_TollgateEditorScene);
  }
 
 void  MenuScene::handbook(CCObject* pSender, CCControlEvent event)
  {
+	 manager->getDesktopWin()->removeAllWins();
 	 /* 调用场景管理器切换场景 */
      SceneManager::sharedSceneManager()->changeScene(SceneManager::en_HandbookScene);
  }
 
 void  MenuScene::shop(CCObject* pSender, CCControlEvent event)
  {
+	 manager->getDesktopWin()->removeAllWins();
 	 /* 调用场景管理器切换场景 */
      SceneManager::sharedSceneManager()->changeScene(SceneManager::en_ShopScene);
  }
 
 void MenuScene::close(CCObject* pSender,  CCControlEvent event)
 {
+	manager->getDesktopWin()->removeAllWins();
     // "close" menu item clicked
     CCDirector::sharedDirector()->end();
 }

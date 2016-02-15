@@ -37,7 +37,7 @@ bool TollgateDataLayer::init() {
 
     do {
 		CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
-		GWWinManager* winManager = new GWWinManager();
+		winManager = new GWWinManager();
 		GWBase* win = winManager->createWinsFromXML(PATH_UI_TollgateProMsgWin);
 		this->addChild(winManager->getDesktopWin());
 
@@ -213,6 +213,8 @@ void TollgateDataLayer::recvRefreshMagicNum( CCObject* pData ) {
 
 	/* 魔力值小于等于0，游戏失败 */
 	if(m_iMagicNum <= 0) {
+		CocosDenshion::SimpleAudioEngine::sharedEngine()->end();
+		winManager->getDesktopWin()->removeAllWins();
 		SceneManager::sharedSceneManager()->changeScene(SceneManager::en_GameOverScene);
 	}
 }
@@ -310,5 +312,7 @@ void TollgateDataLayer::loadGold()
 }
 
 void TollgateDataLayer::endGame(CCObject* pSender, CCControlEvent event) { 
+	CocosDenshion::SimpleAudioEngine::sharedEngine()->end();
+	winManager->getDesktopWin()->removeAllWins();
 	SceneManager::sharedSceneManager()->changeScene(SceneManager::en_GameOverScene);
 }

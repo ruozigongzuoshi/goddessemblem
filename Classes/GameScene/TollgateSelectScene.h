@@ -10,7 +10,7 @@
 #include "cocos-ext.h"
 USING_NS_CC_EXT;
 USING_NS_CC;
-
+class GWWinManager;
 class TollgateSelectScene : public CCLayer {
 public:
     static CCScene* scene();
@@ -31,6 +31,7 @@ private:
     void level_8(CCObject* pSender, CCControlEvent event);
     void level_9(CCObject* pSender, CCControlEvent event);
     void level_10(CCObject* pSender, CCControlEvent event);
+	GWWinManager* winManager;
 };
 
 #endif

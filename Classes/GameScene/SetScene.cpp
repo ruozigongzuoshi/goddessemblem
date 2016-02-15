@@ -9,6 +9,7 @@
 
 SetScene::SetScene()
 : pProgressLabel(NULL)
+, pAssetsManager(NULL)
 , isUpdateItemClicked(false)
 {
     init();
@@ -16,7 +17,7 @@ SetScene::SetScene()
 
 SetScene::~SetScene()
 {
-	AssetsManager *pAssetsManager = getAssetsManager();
+	//AssetsManager *pAssetsManager = getAssetsManager();
     CC_SAFE_DELETE(pAssetsManager);
 }
 
@@ -53,7 +54,7 @@ bool SetScene::init()
     }
 
     CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
-	GWWinManager* winManager = new GWWinManager();
+	winManager = new GWWinManager();
 	GWBase* win = winManager->createWinsFromXML("xml/set.xml");
 
 	this->addChild(winManager->getDesktopWin());
@@ -70,7 +71,8 @@ bool SetScene::init()
 	musicText->setsText("@72");
 	musicText->setiFontSize(24);
 	//musicText->setColor(ccc3(255,100,100));
-	musicText->setPosition(ccp(visibleSize.width/3,visibleSize.height/5 * 4));
+	musicText->setAnchorPoint(ccp(0,0.5));
+	musicText->setPosition(ccp(visibleSize.width/3 - 48,visibleSize.height/5 * 4));
 	this->addChild(musicText);
 
 	//创建俩个菜单项，用来实现当选框的功能
@@ -87,15 +89,15 @@ bool SetScene::init()
 	//关键处在这里，设置菜单项为选中状态，单选框在任何时刻必须有一个为选中状态
 	
 	GlobalClient::sharedGlobalClient()->loadMusicSet();
-	if(GlobalClient::sharedGlobalClient()->getMusicSet() == 0)
+	if(GlobalClient::sharedGlobalClient()->getMusicSet() > 0)
 	{
 		musicON->selected();
 		musicOFF->unselected();
 	}
 	else
 	{
-		musicON->selected();
-		musicOFF->unselected();
+		musicON->unselected();
+		musicOFF->selected();
 	}
 	this->addChild(musicMenu);
 
@@ -103,8 +105,9 @@ bool SetScene::init()
 	GWLabel * languageText = GWLabel::create();
 	languageText->setsText("@73");
 	languageText->setiFontSize(24);
+	languageText->setAnchorPoint(ccp(0,0.5));
 	//languageText->setColor(ccc3(255,100,100));
-	languageText->setPosition(ccp(visibleSize.width/3,visibleSize.height/5 * 3));
+	languageText->setPosition(ccp(visibleSize.width/3 - 48,visibleSize.height/10 * 7));
 	this->addChild(languageText);
 
 	//创建俩个菜单项，用来实现当选框的功能
@@ -117,7 +120,7 @@ bool SetScene::init()
 
 	CCMenu * languageMenu = CCMenu::create(chinese,english,NULL);
 	languageMenu->alignItemsHorizontallyWithPadding(80);
-	languageMenu->setPosition(ccp(visibleSize.width/2,visibleSize.height/5 * 3));
+	languageMenu->setPosition(ccp(visibleSize.width/2,visibleSize.height/10 * 7));
 	//关键处在这里，设置菜单项为选中状态，单选框在任何时刻必须有一个为选中状态
 	GlobalClient::sharedGlobalClient()->loadLanguage();
 	if(GlobalClient::sharedGlobalClient()->getLanguage() == 0)
@@ -150,19 +153,26 @@ bool SetScene::init()
 	 GlobalClient::sharedGlobalClient()->saveLanguage();
 	 GlobalClient::sharedGlobalClient()->saveMusicSet();
 	 I18N::shareI18N()->init();
+	 CocosDenshion::SimpleAudioEngine::sharedEngine()->end();
+	 winManager->getDesktopWin()->removeAllWins();
 	 SceneManager::sharedSceneManager()->changeScene(SceneManager::en_MenuScene);
  }
 
  void  SetScene::updateBtn(CCObject* pSender, CCControlEvent event)
  {
-	 pProgressLabel->setsText("");
+	pProgressLabel->setsText("");
     
     // update resources
-    getAssetsManager()->update();
+	pAssetsManager = new AssetsManager("https://raw.githubusercontent.com/ruozigongzuoshi/goddessemblem/master/update/package.zip",
+                                           "https://raw.githubusercontent.com/ruozigongzuoshi/goddessemblem/master/update/version.txt",
+                                           pathToSave.c_str());
+    pAssetsManager->setDelegate(this);
+    pAssetsManager->setConnectionTimeout(3);
+    pAssetsManager->update();
     
     isUpdateItemClicked = true;
  }
-
+ /*
  AssetsManager* SetScene::getAssetsManager()
 {
     static AssetsManager *pAssetsManager = NULL;
@@ -178,27 +188,10 @@ bool SetScene::init()
     
     return pAssetsManager;
 }
-
+*/
  void SetScene::createDownloadedDir()
 {
     pathToSave = CCFileUtils::sharedFileUtils()->getWritablePath();
-    //pathToSave += "tmpdir";
-    
-    // Create the folder if it doesn't exist
-#if (CC_TARGET_PLATFORM != CC_PLATFORM_WIN32)
-    DIR *pDir = NULL;
-    
-    pDir = opendir (pathToSave.c_str());
-    if (! pDir)
-    {
-        mkdir(pathToSave.c_str(), S_IRWXU | S_IRWXG | S_IRWXO);
-    }
-#else
-	if ((GetFileAttributesA(pathToSave.c_str())) == INVALID_FILE_ATTRIBUTES)
-	{
-		CreateDirectoryA(pathToSave.c_str(), 0);
-	}
-#endif
 }
 
 void SetScene::onError(AssetsManager::ErrorCode errorCode)
@@ -237,14 +230,14 @@ void SetScene::btnMusicON(CCObject * obj)
 {
 	musicON->selected();
 	musicOFF->unselected();
-	GlobalClient::sharedGlobalClient()->setMusicSet(0);
+	GlobalClient::sharedGlobalClient()->setMusicSet(1);
 }
 
 void SetScene::btnMusicOFF(CCObject * obj)
 {
 	musicOFF->selected();
 	musicON->unselected();
-	GlobalClient::sharedGlobalClient()->setMusicSet(1);
+	GlobalClient::sharedGlobalClient()->setMusicSet(0);
 }
 
 void SetScene::changeToChinese(CCObject * obj)

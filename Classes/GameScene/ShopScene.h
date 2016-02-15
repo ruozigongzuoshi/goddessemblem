@@ -9,6 +9,7 @@ USING_NS_CC;
 USING_NS_CC_EXT;
 
 class GWLabel;
+class GWWinManager;
 
 class ShopScene : public cocos2d::CCLayer
 {
@@ -25,6 +26,8 @@ public:
 private:
 	GWLabel* goldLabel;
 	CCArray* heroLabel;
+	
+	GWWinManager* manager;
 };
 
 #endif

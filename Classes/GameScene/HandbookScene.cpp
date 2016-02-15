@@ -33,7 +33,7 @@ bool HandbookScene::init()
     {
 		//±³¾°ÒôÀÖ
 		//CocosDenshion::SimpleAudioEngine::sharedEngine()->playBackgroundMusic("start.mp3",true);
-		GWWinManager* manager = new GWWinManager();
+		manager = new GWWinManager();
 		GWBase* win = manager->createWinsFromXML("xml/handbook.xml");
 
 		this->addChild(manager->getDesktopWin());
@@ -181,12 +181,14 @@ bool HandbookScene::init()
 
  void  HandbookScene::back(CCObject* pSender, CCControlEvent event)
  {
+	 manager->getDesktopWin()->removeAllWins();
 	 SceneManager::sharedSceneManager()->changeScene(SceneManager::en_MenuScene);
  }
 
 void HandbookScene::close(CCObject* pSender,  CCControlEvent event)
 {
     // "close" menu item clicked
+	manager->getDesktopWin()->removeAllWins();
     CCDirector::sharedDirector()->end();
 }
 

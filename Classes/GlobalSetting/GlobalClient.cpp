@@ -174,7 +174,7 @@ void GlobalClient::loadMusicSet()
 		xmlDoc->Parse((const char*)pBuffer);
 		CCString* nums = CCString::create(xmlDoc->RootElement()->FirstChildElement()->FirstChildElement()->GetText());
 		CCLOG(nums->getCString());
-		setLanguage(nums->intValue());
+		setMusicSet(nums->intValue());
 	}
 	delete xmlDoc;
 

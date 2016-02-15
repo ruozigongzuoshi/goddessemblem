@@ -3,6 +3,7 @@
 #include "GameWidget\GWBase.h"
 #include "GameWidget\GWWinManager.h"
 #include "platform\CCFileUtils.h"
+#include "GlobalSetting\GlobalClient.h"
 
 CCScene* StartScene::scene()
 {
@@ -32,7 +33,10 @@ bool StartScene::init()
     do 
     {
 		//±³¾°ÒôÀÖ
-		//CocosDenshion::SimpleAudioEngine::sharedEngine()->playBackgroundMusic("start.mp3",true);
+		GlobalClient::sharedGlobalClient()->loadMusicSet();
+		if(GlobalClient::sharedGlobalClient()->getMusicSet() > 0){
+			CocosDenshion::SimpleAudioEngine::sharedEngine()->playBackgroundMusic("music/onj001.mp3",false);
+		}
 		winManager = new GWWinManager();
 		GWBase* win = winManager->createWinsFromXML("xml/start.xml");
 
@@ -60,5 +64,6 @@ bool StartScene::init()
 void StartScene::close(CCObject* pSender,  CCControlEvent event)
 {
     // "close" menu item clicked
+	winManager->getDesktopWin()->removeAllWins();
     CCDirector::sharedDirector()->end();
 }

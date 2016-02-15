@@ -8,6 +8,8 @@
 USING_NS_CC;
 USING_NS_CC_EXT;
 
+class GWWinManager;
+
 class MenuScene : public cocos2d::CCLayer
 {
 public:
@@ -20,6 +22,8 @@ public:
 	void shop(CCObject* pSender, CCControlEvent event);
 	void close(CCObject* pSender, CCControlEvent event);
 	void set(CCObject* pSender, CCControlEvent event);
+private:
+	GWWinManager* manager;
 };
 
 #endif

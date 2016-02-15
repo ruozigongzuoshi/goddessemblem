@@ -38,7 +38,7 @@ bool HeroInfoScene::init()
 		//±³¾°ÒôÀÖ
 		//CocosDenshion::SimpleAudioEngine::sharedEngine()->playBackgroundMusic("start.mp3",true);
 
-		GWWinManager* manager = new GWWinManager();
+		manager = new GWWinManager();
 		GWBase* win = manager->createWinsFromXML("xml/heroinfo.xml");
 
 		this->addChild(manager->getDesktopWin());
@@ -99,13 +99,14 @@ bool HeroInfoScene::init()
 }
  void  HeroInfoScene::back(CCObject* pSender, CCControlEvent event)
  {
-	 
+	 manager->getDesktopWin()->removeAllWins();
 	 SceneManager::sharedSceneManager()->changeScene(SceneManager::en_HandbookScene);
  }
 
 void HeroInfoScene::close(CCObject* pSender,  CCControlEvent event)
 {
     // "close" menu item clicked
+	manager->getDesktopWin()->removeAllWins();
     CCDirector::sharedDirector()->end();
 }
 

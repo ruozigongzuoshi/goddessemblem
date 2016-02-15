@@ -91,7 +91,7 @@
 		<GWCld><!-- 等级标签 -->
 			<enWinType>GWLabel</enWinType>
 			<des>tollgateMsgWinLVLab</des>
-			<text>100</text>
+			<text>@78</text>
 			<fontSize>25</fontSize>
 			<x>585</x>
 			<y>55</y>
@@ -110,7 +110,7 @@
 		<GWCld><!-- 攻击标签 -->
 			<enWinType>GWLabel</enWinType>
 			<des>tollgateMsgWinATKLab</des>
-			<text>100</text>
+			<text>@78</text>
 			<fontSize>25</fontSize>
 			<x>685</x>
 			<y>55</y>
@@ -129,7 +129,7 @@
 		<GWCld><!-- 速度标签 -->
 			<enWinType>GWLabel</enWinType>
 			<des>tollgateMsgWinSPLab</des>
-			<text>100</text>
+			<text>@78</text>
 			<fontSize>25</fontSize>
 			<x>785</x>
 			<y>55</y>
@@ -148,7 +148,7 @@
 		<GWCld><!-- 范围标签 -->
 			<enWinType>GWLabel</enWinType>
 			<des>tollgateMsgWinSQLab</des>
-			<text>100</text>
+			<text>@78</text>
 			<fontSize>25</fontSize>
 			<x>885</x>
 			<y>55</y>>

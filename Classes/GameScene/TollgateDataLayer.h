@@ -13,6 +13,7 @@ USING_NS_CC;
 USING_NS_CC_EXT;
 
 class GWLabel;
+class GWWinManager;
 class TollgateDataLayer : public CCLayer {
 public:
 	TollgateDataLayer();
@@ -37,6 +38,7 @@ private:
 	void recvRefreshRangeNum(CCObject* pData);
 	void setHero(CCObject* pSender, CCControlEvent event);
 	void loadGold();
+	GWWinManager* winManager;
 
 	/* 接收怪物死亡消息 */
 	void recvMonsterDead(CCObject* pData);

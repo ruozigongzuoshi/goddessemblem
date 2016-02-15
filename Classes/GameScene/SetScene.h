@@ -8,6 +8,7 @@
 
 USING_NS_CC;
 USING_NS_CC_EXT;
+
 class GWWinManager;
 class GWLabel;
 
@@ -21,7 +22,7 @@ public:
 	CREATE_FUNC(SetScene);
     void gotoMenu(CCObject* pSender, CCControlEvent event);
 	void close(CCObject* pSender, CCControlEvent event);
-	AssetsManager* SetScene::getAssetsManager();
+	//AssetsManager* SetScene::getAssetsManager();
 	void updateBtn(CCObject* pSender, CCControlEvent event);
 	void btnMusicON(CCObject * obj);
 	void btnMusicOFF(CCObject * obj);
@@ -39,6 +40,8 @@ private:
 	CCMenuItemImage* musicOFF;
 	CCMenuItemImage* chinese;
 	CCMenuItemImage* english;
+	AssetsManager* pAssetsManager;
+	GWWinManager* winManager;
 };
 
 #endif

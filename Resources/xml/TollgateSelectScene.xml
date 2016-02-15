@@ -2,7 +2,7 @@
 <GWWinRoot>
 	<GWWin>
 		<enWinType>GWNormalWin</enWinType>
-		<bg>tollgate/bg_write.jpg</bg>
+		<bg>bg/select.jpg</bg>
 		<x>0</x>
 		<y>720</y>
 		<anchorX>0</anchorX>

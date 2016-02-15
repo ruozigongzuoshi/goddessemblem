@@ -8,6 +8,8 @@
 USING_NS_CC;
 USING_NS_CC_EXT;
 
+class GWWinManager;
+
 class HandbookScene : public cocos2d::CCLayer
 {
 public:
@@ -26,7 +28,8 @@ public:
 	void gotoHero10Info(CCObject* pSender, CCControlEvent event);
 	void back(CCObject* pSender, CCControlEvent event);
 	void close(CCObject* pSender, CCControlEvent event);
-	
+private:
+	GWWinManager* manager;
 };
 
 #endif

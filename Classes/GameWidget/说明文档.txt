@@ -1,0 +1,6 @@
+这是我实现的cocos2d-x2.x版本的游戏布局管理器（GameWidgetManager）
+入口是GWWinManager，每一个布局文件都用一个游戏布局管理器去管理，
+一个场景可以拥有很多游戏布局管理器，
+根据XML文件,创建控件的方法
+GWBase* createWinsFromXML(const char* sXmlPath);
+然后每个场景结束时，可以调用当前场景游戏布局管理器对象void deleteAllData()方法，清空内存占用

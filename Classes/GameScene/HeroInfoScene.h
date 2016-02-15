@@ -8,6 +8,8 @@
 USING_NS_CC;
 USING_NS_CC_EXT;
 
+class GWWinManager;
+
 class HeroInfoScene : public cocos2d::CCLayer
 {
 public:
@@ -16,6 +18,8 @@ public:
 	CREATE_FUNC(HeroInfoScene);
     void back(CCObject* pSender, CCControlEvent event);
 	void close(CCObject* pSender, CCControlEvent event);
+private:
+	GWWinManager* manager;
 	
 };
 

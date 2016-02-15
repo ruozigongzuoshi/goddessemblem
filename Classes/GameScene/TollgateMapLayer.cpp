@@ -110,14 +110,19 @@ void TollgateMapLayer::loadConfig() {
     CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
 
 	/* 添加背景音乐 */
-	CCString* backgroundMusic = CCString::createWithFormat("%stollgate_%d.mp3",CCFileUtils::sharedFileUtils()->getWritablePath().c_str(), m_iCurLevel);
+	//背景音乐
+	GlobalClient::sharedGlobalClient()->loadMusicSet();
+	if(GlobalClient::sharedGlobalClient()->getMusicSet() > 0){
+		CCString* backgroundMusic = CCString::createWithFormat("%stollgate_%d.mp3",CCFileUtils::sharedFileUtils()->getWritablePath().c_str(), m_iCurLevel);
 	
-	if(!CCFileUtils::sharedFileUtils()->isFileExist(backgroundMusic->getCString()))
-	{
-		backgroundMusic = CCString::createWithFormat("music/tollgate_%d.mp3", m_iCurLevel);
-	}
-	CocosDenshion::SimpleAudioEngine::sharedEngine()->playBackgroundMusic(
+		if(!CCFileUtils::sharedFileUtils()->isFileExist(backgroundMusic->getCString()))
+		{
+			backgroundMusic = CCString::createWithFormat("music/tollgate_%d.mp3", m_iCurLevel);
+		}
+		CocosDenshion::SimpleAudioEngine::sharedEngine()->playBackgroundMusic(
 		backgroundMusic->getCString(), true);
+	}
+	
 
 
     /* 添加地图背景 */
@@ -156,15 +161,17 @@ void TollgateMapLayer::createHome() {
 	CCARRAY_FOREACH(m_monsterMgrList, it){
 		MonsterManager* m_monsterMgr = dynamic_cast<MonsterManager*>(it);
 		MonsterPos* pos = m_monsterMgr->getMonsterEndPos();
+		if(pos != NULL){
+			CCSprite* home = CCSprite::create("tollgate/home.png");
+			home->setPosition(pos->getPos());
 
-		CCSprite* home = CCSprite::create("tollgate/home.png");
-		home->setPosition(pos->getPos());
+			CCActionInterval* rotateBy = CCRotateBy::create(15.0f, 360, 360);
+			CCActionInterval* repeat = CCRepeatForever::create(rotateBy);
+			home->runAction(repeat);
 
-		CCActionInterval* rotateBy = CCRotateBy::create(15.0f, 360, 360);
-		CCActionInterval* repeat = CCRepeatForever::create(rotateBy);
-		home->runAction(repeat);
-
-		this->addChild(home, HOME_LAYER_LVL);
+			this->addChild(home, HOME_LAYER_LVL);
+		}
+		
 	}
 	
 }
@@ -174,15 +181,17 @@ void TollgateMapLayer::createStartPoint() {
 	CCARRAY_FOREACH(m_monsterMgrList, it){
 		MonsterManager* m_monsterMgr = dynamic_cast<MonsterManager*>(it);
 		MonsterPos* pos = m_monsterMgr->getMonsterStartPos();
+		if(pos != NULL){
+			CCSprite* startSp = CCSprite::create("tollgate/start.png");
+			startSp->setPosition(pos->getPos());
 
-		CCSprite* startSp = CCSprite::create("tollgate/start.png");
-		startSp->setPosition(pos->getPos());
+			CCActionInterval* rotateBy = CCRotateBy::create(15.0f, 360, 360);
+			CCActionInterval* repeat = CCRepeatForever::create(rotateBy);
+			startSp->runAction(repeat);
 
-		CCActionInterval* rotateBy = CCRotateBy::create(15.0f, 360, 360);
-		CCActionInterval* repeat = CCRepeatForever::create(rotateBy);
-		startSp->runAction(repeat);
-
-		this->addChild(startSp, HOME_LAYER_LVL);
+			this->addChild(startSp, HOME_LAYER_LVL);
+		}
+		
 	}
 	/*
 	MonsterPos* pos = m_monsterMgr->getMonsterStartPos();
@@ -202,7 +211,8 @@ void TollgateMapLayer::removeMonsterList( CCObject* pData ) {
 	m_monsterMgrList->removeObject((MonsterManager*)pData);
 	CCLOG("Delete a monster list");
 	if(m_monsterMgrList->count() == 0){
-		/* 怪物队列为0，发布怪物胜利消息 */
+		/* 怪物队列为0，发布胜利消息 */
+		CocosDenshion::SimpleAudioEngine::sharedEngine()->end();
 		NOTIFY->postNotification("GameIsWin");
 		CCLOG("GameIsWin");
 	}

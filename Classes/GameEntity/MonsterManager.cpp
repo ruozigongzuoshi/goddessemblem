@@ -194,9 +194,15 @@ CCArray* MonsterManager::getMonsterList() {
 }
 
 MonsterPos* MonsterManager::getMonsterStartPos() {
-	return (MonsterPos*)m_monsterPosList->objectAtIndex(0);
+	if(m_monsterPosList->count() >= 2){
+		return (MonsterPos*)m_monsterPosList->objectAtIndex(0);
+	}
+	return NULL;
 }
 
 MonsterPos* MonsterManager::getMonsterEndPos() {
-	return (MonsterPos*)m_monsterPosList->lastObject();
+	if(m_monsterPosList->count() >= 2){
+		return (MonsterPos*)m_monsterPosList->lastObject();
+	}
+	return NULL;
 }

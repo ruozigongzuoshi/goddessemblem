@@ -1,78 +1,79 @@
-﻿ID_Key值,字符串
-1,ensure
-2,monster
-3,soul
-4,magic
-5,enter
-6,start
-7,edit
-8,handbook
-9,祭坛
-10,退出
-11,英雄坐标编辑模式
-12,输出
-13,下一关
-14,上一关
-15,切换
-16,新建队伍
-17,下一波
-18,上一波
-19,删除队伍
-20,第一关
-21,第二关
-22,第三关
-23,第四关
-24,第五关
-25,第六关
-26,第七关
-27,第八关
-28,第九关
-29,第十关
-30,编号
-31,名字
-32,类别
-33,模式
-34,攻击
-35,速度
-36,范围
-37,成长
-38,消耗
-39,back
-40,魂:
-41,10魂解锁
-42,100魂解锁
-43,1000魂解锁
-44,10000魂解锁
-45,100000魂解锁
-46,1000000魂解锁
-47,10000000魂解锁
-48,100000000魂解锁
-49,1000000000魂解锁
-50,已解锁
-51,关闭
-52,删除
-53,升级
-54,详细
-55,等级
-56,显示怪物
-57,下一个
-58,上一个
-59,删除怪物
-60,添加怪物
-61,保存关卡信息成功
-62,成功跳转至关卡：
-63,添加新的怪物队伍成功
-64,成功跳转至怪物队伍：
-65,删除当前怪物队伍成功
-66,当前怪物队伍有：
-67,当前怪物为：
-68,删除队伍最后一个怪物成功
-69,添加当前怪物至队伍成功
-70,怪物坐标编辑模式
-71,set
-72,Music
-73,Language
-74,update
-75,no new version
-76,network error
-77,download ok
+﻿ID_Key values, the string
+1, sure
+2, monster
+3, soul
+4, magic
+5, enter
+6, begin
+7, editor
+8, handbook
+9, altar
+10, exit
+11, hero coordinates edit mode
+12, output
+13, next level
+14, preceding level
+15, switch
+16, new team
+17, next wave 
+18, preceding wave
+19, delete team
+20, the first level
+21, the second level
+22, the third level
+23, the fourth level
+24, the fifth level
+25, the sixth level
+26, the seventh level
+27, the eighth level
+28, the nine level
+29, the tenth level
+30, no.
+31, name
+32, category
+33, pattern
+34, ATK
+35, speed
+36, Scope 
+37, growing
+38, consumption
+39, Back
+40, soul:
+41, 10 to unlock
+42, 100 to unlock
+43, 1000 to unlock
+44, 10000 to unlock
+45, 100000 to unlock
+46, 1000000 to unlock
+47, 10000000 to unlock
+48, 100000000 to unlock
+49, 1000000000 to unlock
+50, has unlocked
+51, shut off the
+52, delete
+53, upgrade
+54, Info
+55, Level
+56, showing the monster
+57, The next
+58, preceding
+59, delete the monster
+60, add the monster
+61, save the information successfully
+62, successful jump to levels:
+63, new monster team success
+64, jump to the monster team success:
+65, delete the current monster team success
+66, the current monster team are:
+67, the monster is:
+68, delete a monster success finally
+69, add the monster to team success
+70, monsters coordinate edit mode
+71, setting
+72, music          on              off
+73, language    chi            eng
+74, update
+75, no new version
+76, network error
+77, the download is complete
+78, null

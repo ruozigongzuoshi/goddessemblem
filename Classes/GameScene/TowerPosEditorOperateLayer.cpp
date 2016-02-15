@@ -170,6 +170,7 @@ void TowerPosEditorOperateLayer::addWins() {
 
  void  TowerPosEditorOperateLayer::gotoMenu(CCObject* pSender, CCControlEvent event)
  {
+	 manager->getDesktopWin()->removeAllWins();
 	 SceneManager::sharedSceneManager()->changeScene(SceneManager::en_MenuScene);
  }
 

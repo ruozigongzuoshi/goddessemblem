@@ -44,7 +44,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 		GlobalParam::DEFAULT_SCREEN_HEIGHT,
 		kResolutionFixedHeight);
 
-    pDirector->setDisplayStats(true);
+    pDirector->setDisplayStats(false);
 
     pDirector->setAnimationInterval(1.0 / 60);
 
